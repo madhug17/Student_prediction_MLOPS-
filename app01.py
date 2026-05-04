@@ -1,98 +1,199 @@
-﻿from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-import pandas as pd
-import numpy as np
-import mlflow
-import mlflow.pyfunc
+﻿from fastapi import FastAPI, HTTPException, Depends
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+import redis.asyncio as redis
+import json
+import logging
+
+# ---- IMPORT CELERY TASK ----
+from tasks import predict_student
+
+# ---- IMPORT TO CHECK TASK STATUS ----
+from celery.result import AsyncResult
+
 from pydantic import BaseModel
+from dotenv import load_dotenv
+
+# ---- PROMETHEUS METRICS ----
 from prometheus_fastapi_instrumentator import Instrumentator
-import os
 
-# 1. MLflow Setup
-# Ensure the path is correct relative to where your mlruns folder is
-mlflow.set_tracking_uri("file:./mlruns")
+# ---- AUTH FUNCTIONS ----
+from auth import create_access_token, verify_token
 
+# ---- LOAD ENVIRONMENT VARIABLES ----
+load_dotenv()
+
+# ---- INIT FASTAPI APP ----
+app = FastAPI(title="ML Prediction API - Producer Service")
+
+# ---- ENABLE METRICS ENDPOINT ----
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
+
+# ---- LOGGING SETUP ----
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# ---- REDIS CONNECTION POOL ----
+pool = redis.ConnectionPool(
+    host="127.0.0.1",
+    port=6379,
+    decode_responses=True,
+    max_connections=50
+)
+
+# ---- REDIS CLIENT ----
+redis_client = redis.Redis(connection_pool=pool)
+
+# ---- AUTH SETUP ----
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+
+# ---- CURRENT USER VALIDATION ----
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    payload = verify_token(token)
+
+    if not payload:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    return payload
+
+
+# ---- INPUT DATA MODEL ----
 class StudentData(BaseModel):
     G1: int
     G2: int
     absences: int
-    higher: str
     failures: int = 0
     studytime: int = 2
-    Medu: int = 4
-    Fedu: int = 4
-    goout: int = 2
+    Mother_edu: int = 4
+    Father_edu: int = 4
+    Trip: int = 2
     health: int = 5
+    higher: str = "yes"
     sex: str = "M"
     school: str = "GP"
 
-app = FastAPI()
 
-# 2. Instrumentator (MUST be before routes or called correctly)
-# This sets up the /metrics endpoint for Prometheus
-instrumentator = Instrumentator()
-instrumentator.instrument(app)
+# =========================================================
+# ROUTES
+# =========================================================
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# 3. Defensive Model Loading
-try:
-    # Use the logged model path or the registry alias
-    model = mlflow.pyfunc.load_model("models:/student-performance-model@production")
-    print("✅ MLflow Model Loaded from Production Registry")
-except Exception as e:
-    print(f"⚠️ Registry failed, trying local path: {e}")
-    # Fallback to a direct path if the registry isn't configured in the environment
-    model = None
-
+# ---- HEALTH CHECK ROUTE ----
 @app.get("/")
-def health():
+async def health():
+    try:
+        redis_ok = await redis_client.ping()
+
+    except Exception as e:
+        logger.error(f"Health check Redis fail: {e}")
+        redis_ok = False
+
     return {
-        "status": "online", 
-        "model_loaded": model is not None,
-        "monitoring": "Prometheus metrics available at /metrics"
+        "status": "online",
+        "redis": redis_ok,
+        "service": "producer"
     }
 
-@app.post("/predict-easy")
-def predict_easy(data: StudentData):
-    if model is None:
-        raise HTTPException(status_code=503, detail="MLflow model not loaded")
-    
-    try:
-        df_in = pd.DataFrame([data.model_dump()])
 
-        # Mapping names to match your training features
-        df_in = df_in.rename(columns={
-            "Medu": "Mother_edu",
-            "Fedu": "Father_edu",
-            "goout": "Trip"
-        })
+# ---- LOGIN ROUTE ----
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
-        pred = model.predict(df_in)
+    if form_data.username == "admin" and form_data.password == "1234":
 
-        # Handle confidence scores if the model supports it
-        try:
-            # Some MLflow wrappers require .predict_proba, others return it in .predict
-            prob = model.predict_proba(df_in)
-            confidence = round(float(np.max(prob)) * 100, 2)
-        except:
-            confidence = 100.0
+        token = create_access_token({"sub": form_data.username})
 
         return {
-            "prediction": "Pass" if int(pred) == 1 else "Fail",
-            "confidence": confidence
+            "access_token": token,
+            "token_type": "bearer"
+        }
+
+    raise HTTPException(status_code=401, detail="Invalid credentials")
+
+
+# ---- PREDICTION ROUTE ----
+@app.post("/predict-easy")
+async def predict_easy(
+    data: StudentData,
+    current_user: dict = Depends(get_current_user)
+):
+    try:
+        payload = data.model_dump()
+
+        # Send task to Celery
+        task = predict_student.delay(payload)
+
+        # Optional manual Redis queue tracking
+        job = {
+            "id": task.id,
+            "data": payload,
+            "status": "queued"
+        }
+
+        await redis_client.rpush("prediction_queue", json.dumps(job))
+
+        return {
+            "status": "queued",
+            "task_id": task.id
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"TASK QUEUE ERROR: {e}")
 
-# 4. Expose metrics
-@app.on_event("startup")
-async def expose_metrics():
-    instrumentator.expose(app)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Internal Queue Error: {str(e)}"
+        )
+
+
+# ---- RESULT CHECK ROUTE ----
+@app.get("/result/{request_id}")
+async def get_result(
+    request_id: str,
+    current_user: dict = Depends(get_current_user)
+):
+    try:
+        # IMPORTANT FIX:
+        # bind Celery app explicitly
+        task_result = AsyncResult(request_id, app=predict_student.app)
+
+        if task_result.state == "PENDING":
+            return {
+                "status": "processing",
+                "request_id": request_id,
+                "state": task_result.state
+            }
+
+        if task_result.state == "FAILURE":
+            return {
+                "status": "failed",
+                "request_id": request_id,
+                "state": task_result.state,
+                "error": str(task_result.result)
+            }
+
+        return {
+            "status": "completed",
+            "request_id": request_id,
+            "state": task_result.state,
+            "result": task_result.result
+        }
+
+    except Exception as e:
+        logger.error(f"RESULT FETCH ERROR: {e}")
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Result Fetch Error: {str(e)}"
+        )
+
+
+# ---- RUN APP ----
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(
+        "app01:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True
+    )
