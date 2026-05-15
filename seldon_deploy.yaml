@@ -1,0 +1,21 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: student-model-deployment
+  namespace: seldon
+spec:
+  name: student-exp
+  predictors:
+  - componentSpecs:
+    - spec:
+        containers:
+        - image: student-model-seldon:v1  # Your Docker image name
+          name: student-classifier
+    graph:
+      name: student-classifier
+      type: MODEL
+      endpoint:
+        type: REST
+    name: default
+    replicas: 1  # Seldon will manage how many copies to run
+    

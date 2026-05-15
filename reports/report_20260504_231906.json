@@ -1,0 +1,3648 @@
+{
+    "metrics": [
+        {
+            "metric": "DatasetSummaryMetric",
+            "result": {
+                "almost_duplicated_threshold": 0.95,
+                "current": {
+                    "target": null,
+                    "prediction": null,
+                    "date_column": null,
+                    "id_column": null,
+                    "number_of_columns": 33,
+                    "number_of_rows": 195,
+                    "number_of_missing_values": 0,
+                    "number_of_categorical_columns": 17,
+                    "number_of_numeric_columns": 16,
+                    "number_of_text_columns": 0,
+                    "number_of_datetime_columns": 0,
+                    "number_of_constant_columns": 0,
+                    "number_of_almost_constant_columns": 0,
+                    "number_of_duplicated_columns": 0,
+                    "number_of_almost_duplicated_columns": 0,
+                    "number_of_empty_rows": 0,
+                    "number_of_empty_columns": 0,
+                    "number_of_duplicated_rows": 0,
+                    "nans_by_columns": {
+                        "school": 0,
+                        "sex": 0,
+                        "age": 0,
+                        "address": 0,
+                        "famsize": 0,
+                        "Pstatus": 0,
+                        "Medu": 0,
+                        "Fedu": 0,
+                        "Mjob": 0,
+                        "Fjob": 0,
+                        "reason": 0,
+                        "guardian": 0,
+                        "traveltime": 0,
+                        "studytime": 0,
+                        "failures": 0,
+                        "schoolsup": 0,
+                        "famsup": 0,
+                        "paid": 0,
+                        "activities": 0,
+                        "nursery": 0,
+                        "higher": 0,
+                        "internet": 0,
+                        "romantic": 0,
+                        "famrel": 0,
+                        "freetime": 0,
+                        "goout": 0,
+                        "Dalc": 0,
+                        "Walc": 0,
+                        "health": 0,
+                        "absences": 0,
+                        "G1": 0,
+                        "G2": 0,
+                        "G3": 0
+                    },
+                    "number_uniques_by_columns": {
+                        "school": 2,
+                        "sex": 2,
+                        "age": 7,
+                        "address": 2,
+                        "famsize": 2,
+                        "Pstatus": 2,
+                        "Medu": 5,
+                        "Fedu": 4,
+                        "Mjob": 5,
+                        "Fjob": 5,
+                        "reason": 4,
+                        "guardian": 3,
+                        "traveltime": 4,
+                        "studytime": 4,
+                        "failures": 4,
+                        "schoolsup": 2,
+                        "famsup": 2,
+                        "paid": 2,
+                        "activities": 2,
+                        "nursery": 2,
+                        "higher": 2,
+                        "internet": 2,
+                        "romantic": 2,
+                        "famrel": 5,
+                        "freetime": 5,
+                        "goout": 5,
+                        "Dalc": 5,
+                        "Walc": 5,
+                        "health": 5,
+                        "absences": 29,
+                        "G1": 15,
+                        "G2": 15,
+                        "G3": 17
+                    }
+                },
+                "reference": {
+                    "target": null,
+                    "prediction": null,
+                    "date_column": null,
+                    "id_column": null,
+                    "number_of_columns": 33,
+                    "number_of_rows": 200,
+                    "number_of_missing_values": 0,
+                    "number_of_categorical_columns": 17,
+                    "number_of_numeric_columns": 16,
+                    "number_of_text_columns": 0,
+                    "number_of_datetime_columns": 0,
+                    "number_of_constant_columns": 1,
+                    "number_of_almost_constant_columns": 2,
+                    "number_of_duplicated_columns": 0,
+                    "number_of_almost_duplicated_columns": 0,
+                    "number_of_empty_rows": 0,
+                    "number_of_empty_columns": 0,
+                    "number_of_duplicated_rows": 0,
+                    "nans_by_columns": {
+                        "school": 0,
+                        "sex": 0,
+                        "age": 0,
+                        "address": 0,
+                        "famsize": 0,
+                        "Pstatus": 0,
+                        "Medu": 0,
+                        "Fedu": 0,
+                        "Mjob": 0,
+                        "Fjob": 0,
+                        "reason": 0,
+                        "guardian": 0,
+                        "traveltime": 0,
+                        "studytime": 0,
+                        "failures": 0,
+                        "schoolsup": 0,
+                        "famsup": 0,
+                        "paid": 0,
+                        "activities": 0,
+                        "nursery": 0,
+                        "higher": 0,
+                        "internet": 0,
+                        "romantic": 0,
+                        "famrel": 0,
+                        "freetime": 0,
+                        "goout": 0,
+                        "Dalc": 0,
+                        "Walc": 0,
+                        "health": 0,
+                        "absences": 0,
+                        "G1": 0,
+                        "G2": 0,
+                        "G3": 0
+                    },
+                    "number_uniques_by_columns": {
+                        "school": 1,
+                        "sex": 2,
+                        "age": 5,
+                        "address": 2,
+                        "famsize": 2,
+                        "Pstatus": 2,
+                        "Medu": 5,
+                        "Fedu": 5,
+                        "Mjob": 5,
+                        "Fjob": 5,
+                        "reason": 4,
+                        "guardian": 3,
+                        "traveltime": 4,
+                        "studytime": 4,
+                        "failures": 4,
+                        "schoolsup": 2,
+                        "famsup": 2,
+                        "paid": 2,
+                        "activities": 2,
+                        "nursery": 2,
+                        "higher": 2,
+                        "internet": 2,
+                        "romantic": 2,
+                        "famrel": 5,
+                        "freetime": 5,
+                        "goout": 5,
+                        "Dalc": 5,
+                        "Walc": 5,
+                        "health": 5,
+                        "absences": 17,
+                        "G1": 16,
+                        "G2": 17,
+                        "G3": 17
+                    }
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "G2",
+                "column_type": "num",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 10.79,
+                    "std": 4.11,
+                    "min": 0.0,
+                    "p25": 8.0,
+                    "p50": 11.0,
+                    "p75": 14.0,
+                    "max": 19.0,
+                    "unique": 17,
+                    "unique_percentage": 8.5,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 10.0,
+                    "most_common_percentage": 11.5
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 10.64,
+                    "std": 3.38,
+                    "min": 0.0,
+                    "p25": 9.0,
+                    "p50": 11.0,
+                    "p75": 13.0,
+                    "max": 18.0,
+                    "unique": 15,
+                    "unique_percentage": 7.69,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 9.0,
+                    "most_common_percentage": 15.38
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "G1",
+                "column_type": "num",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 10.74,
+                    "std": 3.41,
+                    "min": 4.0,
+                    "p25": 8.0,
+                    "p50": 10.0,
+                    "p75": 13.0,
+                    "max": 19.0,
+                    "unique": 16,
+                    "unique_percentage": 8.0,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 10.0,
+                    "most_common_percentage": 14.0
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 11.08,
+                    "std": 3.23,
+                    "min": 3.0,
+                    "p25": 9.0,
+                    "p50": 11.0,
+                    "p75": 13.0,
+                    "max": 19.0,
+                    "unique": 15,
+                    "unique_percentage": 7.69,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 10.0,
+                    "most_common_percentage": 11.79
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "G3",
+                "column_type": "num",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 10.62,
+                    "std": 4.65,
+                    "min": 0.0,
+                    "p25": 8.75,
+                    "p50": 11.0,
+                    "p75": 14.0,
+                    "max": 20.0,
+                    "unique": 17,
+                    "unique_percentage": 8.5,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 10.0,
+                    "most_common_percentage": 13.5
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 10.2,
+                    "std": 4.51,
+                    "min": 0.0,
+                    "p25": 8.0,
+                    "p50": 11.0,
+                    "p75": 13.0,
+                    "max": 19.0,
+                    "unique": 17,
+                    "unique_percentage": 8.72,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 10.0,
+                    "most_common_percentage": 14.87
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "absences",
+                "column_type": "num",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 4.78,
+                    "std": 7.18,
+                    "min": 0.0,
+                    "p25": 0.0,
+                    "p50": 2.0,
+                    "p75": 6.0,
+                    "max": 56.0,
+                    "unique": 17,
+                    "unique_percentage": 8.5,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 0.0,
+                    "most_common_percentage": 32.0
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "mean": 6.66,
+                    "std": 8.68,
+                    "min": 0.0,
+                    "p25": 0.0,
+                    "p50": 4.0,
+                    "p75": 10.0,
+                    "max": 75.0,
+                    "unique": 29,
+                    "unique_percentage": 14.87,
+                    "infinite_count": 0,
+                    "infinite_percentage": 0.0,
+                    "most_common": 0.0,
+                    "most_common_percentage": 26.15
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "reason",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.0,
+                    "most_common": "course",
+                    "most_common_percentage": 38.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.05,
+                    "most_common": "course",
+                    "most_common_percentage": 34.87,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "sex",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "M",
+                    "most_common_percentage": 52.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "F",
+                    "most_common_percentage": 57.95,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "paid",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "no",
+                    "most_common_percentage": 60.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "yes",
+                    "most_common_percentage": 51.79,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "famsup",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "yes",
+                    "most_common_percentage": 66.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "yes",
+                    "most_common_percentage": 55.9,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "internet",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "yes",
+                    "most_common_percentage": 84.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "yes",
+                    "most_common_percentage": 82.56,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "nursery",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "yes",
+                    "most_common_percentage": 83.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "yes",
+                    "most_common_percentage": 75.9,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "guardian",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 3,
+                    "unique_percentage": 1.5,
+                    "most_common": "mother",
+                    "most_common_percentage": 70.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 3,
+                    "unique_percentage": 1.54,
+                    "most_common": "mother",
+                    "most_common_percentage": 67.69,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "goout",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 3,
+                    "most_common_percentage": 32.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 3,
+                    "most_common_percentage": 33.85,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Pstatus",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "T",
+                    "most_common_percentage": 89.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "T",
+                    "most_common_percentage": 90.26,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "schoolsup",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "no",
+                    "most_common_percentage": 79.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "no",
+                    "most_common_percentage": 94.87,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Mjob",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": "other",
+                    "most_common_percentage": 35.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": "other",
+                    "most_common_percentage": 36.41,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Fjob",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": "other",
+                    "most_common_percentage": 53.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": "other",
+                    "most_common_percentage": 56.92,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "romantic",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "no",
+                    "most_common_percentage": 72.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "no",
+                    "most_common_percentage": 60.51,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "freetime",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 3,
+                    "most_common_percentage": 40.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 3,
+                    "most_common_percentage": 38.97,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "age",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 16,
+                    "most_common_percentage": 42.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 7,
+                    "unique_percentage": 3.59,
+                    "most_common": 18,
+                    "most_common_percentage": 40.0,
+                    "new_in_current_values_count": 3,
+                    "unused_in_current_values_count": 1
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "famsize",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "GT3",
+                    "most_common_percentage": 72.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "GT3",
+                    "most_common_percentage": 70.26,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "school",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 1,
+                    "unique_percentage": 0.5,
+                    "most_common": "GP",
+                    "most_common_percentage": 100.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "GP",
+                    "most_common_percentage": 76.41,
+                    "new_in_current_values_count": 1,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "traveltime",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.0,
+                    "most_common": 1,
+                    "most_common_percentage": 71.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.05,
+                    "most_common": 1,
+                    "most_common_percentage": 58.97,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Medu",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 4,
+                    "most_common_percentage": 37.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 4,
+                    "most_common_percentage": 28.72,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Walc",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 1,
+                    "most_common_percentage": 44.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 1,
+                    "most_common_percentage": 31.79,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "failures",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.0,
+                    "most_common": 0,
+                    "most_common_percentage": 81.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.05,
+                    "most_common": 0,
+                    "most_common_percentage": 76.92,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "famrel",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 4,
+                    "most_common_percentage": 46.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 4,
+                    "most_common_percentage": 52.31,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "activities",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "yes",
+                    "most_common_percentage": 56.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "no",
+                    "most_common_percentage": 54.36,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Dalc",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 1,
+                    "most_common_percentage": 72.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 1,
+                    "most_common_percentage": 67.69,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "Fedu",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 2,
+                    "most_common_percentage": 29.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.05,
+                    "most_common": 2,
+                    "most_common_percentage": 28.72,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 1
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "studytime",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.0,
+                    "most_common": 2,
+                    "most_common_percentage": 51.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 4,
+                    "unique_percentage": 2.05,
+                    "most_common": 2,
+                    "most_common_percentage": 49.23,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "higher",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "yes",
+                    "most_common_percentage": 95.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "yes",
+                    "most_common_percentage": 94.87,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "address",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.0,
+                    "most_common": "U",
+                    "most_common_percentage": 84.0,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 2,
+                    "unique_percentage": 1.03,
+                    "most_common": "U",
+                    "most_common_percentage": 71.28,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "ColumnSummaryMetric",
+            "result": {
+                "column_name": "health",
+                "column_type": "cat",
+                "reference_characteristics": {
+                    "number_of_rows": 200,
+                    "count": 200,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.5,
+                    "most_common": 5,
+                    "most_common_percentage": 43.5,
+                    "new_in_current_values_count": null,
+                    "unused_in_current_values_count": null
+                },
+                "current_characteristics": {
+                    "number_of_rows": 195,
+                    "count": 195,
+                    "missing": 0,
+                    "missing_percentage": 0.0,
+                    "unique": 5,
+                    "unique_percentage": 2.56,
+                    "most_common": 5,
+                    "most_common_percentage": 30.26,
+                    "new_in_current_values_count": 0,
+                    "unused_in_current_values_count": 0
+                }
+            }
+        },
+        {
+            "metric": "DatasetMissingValuesMetric",
+            "result": {
+                "current": {
+                    "different_missing_values": {
+                        "": 0,
+                        "-Infinity": 0,
+                        "Infinity": 0,
+                        "null": 0
+                    },
+                    "number_of_different_missing_values": 0,
+                    "different_missing_values_by_column": {
+                        "school": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "sex": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "age": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "address": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "famsize": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Pstatus": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Medu": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Fedu": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Mjob": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Fjob": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "reason": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "guardian": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "traveltime": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "studytime": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "failures": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "schoolsup": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "famsup": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "paid": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "activities": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "nursery": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "higher": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "internet": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "romantic": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "famrel": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "freetime": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "goout": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Dalc": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Walc": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "health": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "absences": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "G1": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "G2": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "G3": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        }
+                    },
+                    "number_of_different_missing_values_by_column": {
+                        "school": 0,
+                        "sex": 0,
+                        "age": 0,
+                        "address": 0,
+                        "famsize": 0,
+                        "Pstatus": 0,
+                        "Medu": 0,
+                        "Fedu": 0,
+                        "Mjob": 0,
+                        "Fjob": 0,
+                        "reason": 0,
+                        "guardian": 0,
+                        "traveltime": 0,
+                        "studytime": 0,
+                        "failures": 0,
+                        "schoolsup": 0,
+                        "famsup": 0,
+                        "paid": 0,
+                        "activities": 0,
+                        "nursery": 0,
+                        "higher": 0,
+                        "internet": 0,
+                        "romantic": 0,
+                        "famrel": 0,
+                        "freetime": 0,
+                        "goout": 0,
+                        "Dalc": 0,
+                        "Walc": 0,
+                        "health": 0,
+                        "absences": 0,
+                        "G1": 0,
+                        "G2": 0,
+                        "G3": 0
+                    },
+                    "number_of_missing_values": 0,
+                    "share_of_missing_values": 0.0,
+                    "number_of_missing_values_by_column": {
+                        "school": 0,
+                        "sex": 0,
+                        "age": 0,
+                        "address": 0,
+                        "famsize": 0,
+                        "Pstatus": 0,
+                        "Medu": 0,
+                        "Fedu": 0,
+                        "Mjob": 0,
+                        "Fjob": 0,
+                        "reason": 0,
+                        "guardian": 0,
+                        "traveltime": 0,
+                        "studytime": 0,
+                        "failures": 0,
+                        "schoolsup": 0,
+                        "famsup": 0,
+                        "paid": 0,
+                        "activities": 0,
+                        "nursery": 0,
+                        "higher": 0,
+                        "internet": 0,
+                        "romantic": 0,
+                        "famrel": 0,
+                        "freetime": 0,
+                        "goout": 0,
+                        "Dalc": 0,
+                        "Walc": 0,
+                        "health": 0,
+                        "absences": 0,
+                        "G1": 0,
+                        "G2": 0,
+                        "G3": 0
+                    },
+                    "share_of_missing_values_by_column": {
+                        "school": 0.0,
+                        "sex": 0.0,
+                        "age": 0.0,
+                        "address": 0.0,
+                        "famsize": 0.0,
+                        "Pstatus": 0.0,
+                        "Medu": 0.0,
+                        "Fedu": 0.0,
+                        "Mjob": 0.0,
+                        "Fjob": 0.0,
+                        "reason": 0.0,
+                        "guardian": 0.0,
+                        "traveltime": 0.0,
+                        "studytime": 0.0,
+                        "failures": 0.0,
+                        "schoolsup": 0.0,
+                        "famsup": 0.0,
+                        "paid": 0.0,
+                        "activities": 0.0,
+                        "nursery": 0.0,
+                        "higher": 0.0,
+                        "internet": 0.0,
+                        "romantic": 0.0,
+                        "famrel": 0.0,
+                        "freetime": 0.0,
+                        "goout": 0.0,
+                        "Dalc": 0.0,
+                        "Walc": 0.0,
+                        "health": 0.0,
+                        "absences": 0.0,
+                        "G1": 0.0,
+                        "G2": 0.0,
+                        "G3": 0.0
+                    },
+                    "number_of_rows": 195,
+                    "number_of_rows_with_missing_values": 0,
+                    "share_of_rows_with_missing_values": 0.0,
+                    "number_of_columns": 33,
+                    "columns_with_missing_values": [],
+                    "number_of_columns_with_missing_values": 0,
+                    "share_of_columns_with_missing_values": 0.0
+                },
+                "reference": {
+                    "different_missing_values": {
+                        "": 0,
+                        "-Infinity": 0,
+                        "Infinity": 0,
+                        "null": 0
+                    },
+                    "number_of_different_missing_values": 0,
+                    "different_missing_values_by_column": {
+                        "school": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "sex": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "age": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "address": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "famsize": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Pstatus": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Medu": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Fedu": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Mjob": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Fjob": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "reason": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "guardian": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "traveltime": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "studytime": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "failures": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "schoolsup": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "famsup": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "paid": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "activities": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "nursery": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "higher": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "internet": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "romantic": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "famrel": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "freetime": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "goout": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Dalc": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "Walc": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "health": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "absences": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "G1": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "G2": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        },
+                        "G3": {
+                            "": 0,
+                            "-Infinity": 0,
+                            "Infinity": 0,
+                            "null": 0
+                        }
+                    },
+                    "number_of_different_missing_values_by_column": {
+                        "school": 0,
+                        "sex": 0,
+                        "age": 0,
+                        "address": 0,
+                        "famsize": 0,
+                        "Pstatus": 0,
+                        "Medu": 0,
+                        "Fedu": 0,
+                        "Mjob": 0,
+                        "Fjob": 0,
+                        "reason": 0,
+                        "guardian": 0,
+                        "traveltime": 0,
+                        "studytime": 0,
+                        "failures": 0,
+                        "schoolsup": 0,
+                        "famsup": 0,
+                        "paid": 0,
+                        "activities": 0,
+                        "nursery": 0,
+                        "higher": 0,
+                        "internet": 0,
+                        "romantic": 0,
+                        "famrel": 0,
+                        "freetime": 0,
+                        "goout": 0,
+                        "Dalc": 0,
+                        "Walc": 0,
+                        "health": 0,
+                        "absences": 0,
+                        "G1": 0,
+                        "G2": 0,
+                        "G3": 0
+                    },
+                    "number_of_missing_values": 0,
+                    "share_of_missing_values": 0.0,
+                    "number_of_missing_values_by_column": {
+                        "school": 0,
+                        "sex": 0,
+                        "age": 0,
+                        "address": 0,
+                        "famsize": 0,
+                        "Pstatus": 0,
+                        "Medu": 0,
+                        "Fedu": 0,
+                        "Mjob": 0,
+                        "Fjob": 0,
+                        "reason": 0,
+                        "guardian": 0,
+                        "traveltime": 0,
+                        "studytime": 0,
+                        "failures": 0,
+                        "schoolsup": 0,
+                        "famsup": 0,
+                        "paid": 0,
+                        "activities": 0,
+                        "nursery": 0,
+                        "higher": 0,
+                        "internet": 0,
+                        "romantic": 0,
+                        "famrel": 0,
+                        "freetime": 0,
+                        "goout": 0,
+                        "Dalc": 0,
+                        "Walc": 0,
+                        "health": 0,
+                        "absences": 0,
+                        "G1": 0,
+                        "G2": 0,
+                        "G3": 0
+                    },
+                    "share_of_missing_values_by_column": {
+                        "school": 0.0,
+                        "sex": 0.0,
+                        "age": 0.0,
+                        "address": 0.0,
+                        "famsize": 0.0,
+                        "Pstatus": 0.0,
+                        "Medu": 0.0,
+                        "Fedu": 0.0,
+                        "Mjob": 0.0,
+                        "Fjob": 0.0,
+                        "reason": 0.0,
+                        "guardian": 0.0,
+                        "traveltime": 0.0,
+                        "studytime": 0.0,
+                        "failures": 0.0,
+                        "schoolsup": 0.0,
+                        "famsup": 0.0,
+                        "paid": 0.0,
+                        "activities": 0.0,
+                        "nursery": 0.0,
+                        "higher": 0.0,
+                        "internet": 0.0,
+                        "romantic": 0.0,
+                        "famrel": 0.0,
+                        "freetime": 0.0,
+                        "goout": 0.0,
+                        "Dalc": 0.0,
+                        "Walc": 0.0,
+                        "health": 0.0,
+                        "absences": 0.0,
+                        "G1": 0.0,
+                        "G2": 0.0,
+                        "G3": 0.0
+                    },
+                    "number_of_rows": 200,
+                    "number_of_rows_with_missing_values": 0,
+                    "share_of_rows_with_missing_values": 0.0,
+                    "number_of_columns": 33,
+                    "columns_with_missing_values": [],
+                    "number_of_columns_with_missing_values": 0,
+                    "share_of_columns_with_missing_values": 0.0
+                }
+            }
+        },
+        {
+            "metric": "DatasetCorrelationsMetric",
+            "result": {
+                "current": {
+                    "stats": {
+                        "pearson": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.8955107401205981,
+                            "abs_max_features_correlation": 0.8955107401205981
+                        },
+                        "spearman": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.9509207987264988,
+                            "abs_max_features_correlation": 0.9509207987264988
+                        },
+                        "kendall": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.8779633543636225,
+                            "abs_max_features_correlation": 0.8779633543636225
+                        },
+                        "cramer_v": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.572026649136187,
+                            "abs_max_features_correlation": 0.572026649136187
+                        }
+                    }
+                },
+                "reference": {
+                    "stats": {
+                        "pearson": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.9399584224997583,
+                            "abs_max_features_correlation": 0.9399584224997583
+                        },
+                        "spearman": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.9652209660300872,
+                            "abs_max_features_correlation": 0.9652209660300872
+                        },
+                        "kendall": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.8933902068732053,
+                            "abs_max_features_correlation": 0.8933902068732053
+                        },
+                        "cramer_v": {
+                            "target_prediction_correlation": null,
+                            "abs_max_target_features_correlation": null,
+                            "abs_max_prediction_features_correlation": null,
+                            "abs_max_correlation": 0.5076752946451386,
+                            "abs_max_features_correlation": 0.5076752946451386
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "metric": "DatasetDriftMetric",
+            "result": {
+                "drift_share": 0.5,
+                "number_of_columns": 33,
+                "number_of_drifted_columns": 18,
+                "share_of_drifted_columns": 0.5454545454545454,
+                "dataset_drift": true
+            }
+        },
+        {
+            "metric": "DataDriftTable",
+            "result": {
+                "number_of_columns": 33,
+                "number_of_drifted_columns": 18,
+                "share_of_drifted_columns": 0.5454545454545454,
+                "dataset_drift": true,
+                "drift_by_columns": {
+                    "Dalc": {
+                        "column_name": "Dalc",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.5696380674786243,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    1.6923076923076925,
+                                    0.0,
+                                    0.48717948717948706,
+                                    0.0,
+                                    0.0,
+                                    0.19230769230769212,
+                                    0.0,
+                                    0.06410256410256412,
+                                    0.0,
+                                    0.06410256410256404
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    1.8000000000000003,
+                                    0.0,
+                                    0.46249999999999986,
+                                    0.0,
+                                    0.0,
+                                    0.13749999999999987,
+                                    0.0,
+                                    0.05000000000000001,
+                                    0.0,
+                                    0.049999999999999954
+                                ]
+                            }
+                        }
+                    },
+                    "Fedu": {
+                        "column_name": "Fedu",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 3.504065504857635e-05,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.3,
+                                    1.6,
+                                    1.9,
+                                    2.2,
+                                    2.5,
+                                    2.8,
+                                    3.1,
+                                    3.4,
+                                    3.6999999999999997,
+                                    4.0
+                                ],
+                                "y": [
+                                    0.8888888888888888,
+                                    0.0,
+                                    0.0,
+                                    0.9572649572649565,
+                                    0.0,
+                                    0.0,
+                                    0.837606837606837,
+                                    0.0,
+                                    0.0,
+                                    0.649572649572649
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    0.4,
+                                    0.8,
+                                    1.2000000000000002,
+                                    1.6,
+                                    2.0,
+                                    2.4000000000000004,
+                                    2.8000000000000003,
+                                    3.2,
+                                    3.6,
+                                    4.0
+                                ],
+                                "y": [
+                                    0.025,
+                                    0.0,
+                                    0.37499999999999983,
+                                    0.0,
+                                    0.0,
+                                    0.7374999999999993,
+                                    0.0,
+                                    0.6375000000000002,
+                                    0.0,
+                                    0.7250000000000001
+                                ]
+                            }
+                        }
+                    },
+                    "G1": {
+                        "column_name": "G1",
+                        "column_type": "num",
+                        "stattest_name": "K-S p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.6191972457444554,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    3.0,
+                                    4.6,
+                                    6.2,
+                                    7.800000000000001,
+                                    9.4,
+                                    11.0,
+                                    12.600000000000001,
+                                    14.200000000000001,
+                                    15.8,
+                                    17.4,
+                                    19.0
+                                ],
+                                "y": [
+                                    0.003205128205128206,
+                                    0.04807692307692306,
+                                    0.04807692307692306,
+                                    0.10897435897435899,
+                                    0.07371794871794873,
+                                    0.12820512820512808,
+                                    0.1121794871794872,
+                                    0.04166666666666668,
+                                    0.044871794871794934,
+                                    0.01602564102564101
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    4.0,
+                                    5.5,
+                                    7.0,
+                                    8.5,
+                                    10.0,
+                                    11.5,
+                                    13.0,
+                                    14.5,
+                                    16.0,
+                                    17.5,
+                                    19.0
+                                ],
+                                "y": [
+                                    0.026666666666666665,
+                                    0.03,
+                                    0.15333333333333335,
+                                    0.04666666666666667,
+                                    0.15666666666666665,
+                                    0.05,
+                                    0.09333333333333334,
+                                    0.03666666666666667,
+                                    0.05333333333333333,
+                                    0.02
+                                ]
+                            }
+                        }
+                    },
+                    "G2": {
+                        "column_name": "G2",
+                        "column_type": "num",
+                        "stattest_name": "K-S p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.3959751857699865,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    1.8,
+                                    3.6,
+                                    5.4,
+                                    7.2,
+                                    9.0,
+                                    10.8,
+                                    12.6,
+                                    14.4,
+                                    16.2,
+                                    18.0
+                                ],
+                                "y": [
+                                    0.011396011396011397,
+                                    0.0,
+                                    0.02279202279202279,
+                                    0.042735042735042736,
+                                    0.04843304843304844,
+                                    0.15099715099715094,
+                                    0.12535612535612545,
+                                    0.07977207977207974,
+                                    0.05128205128205131,
+                                    0.022792022792022783
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    1.9,
+                                    3.8,
+                                    5.699999999999999,
+                                    7.6,
+                                    9.5,
+                                    11.399999999999999,
+                                    13.299999999999999,
+                                    15.2,
+                                    17.099999999999998,
+                                    19.0
+                                ],
+                                "y": [
+                                    0.023684210526315794,
+                                    0.0,
+                                    0.021052631578947375,
+                                    0.052631578947368404,
+                                    0.09210526315789473,
+                                    0.10263157894736849,
+                                    0.09210526315789473,
+                                    0.08684210526315787,
+                                    0.031578947368421074,
+                                    0.023684210526315762
+                                ]
+                            }
+                        }
+                    },
+                    "G3": {
+                        "column_name": "G3",
+                        "column_type": "num",
+                        "stattest_name": "K-S p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.6601229837284365,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    1.9,
+                                    3.8,
+                                    5.699999999999999,
+                                    7.6,
+                                    9.5,
+                                    11.399999999999999,
+                                    13.299999999999999,
+                                    15.2,
+                                    17.099999999999998,
+                                    19.0
+                                ],
+                                "y": [
+                                    0.05398110661268556,
+                                    0.0,
+                                    0.010796221322537117,
+                                    0.024291497975708495,
+                                    0.09176788124156543,
+                                    0.13765182186234828,
+                                    0.09176788124156543,
+                                    0.07287449392712549,
+                                    0.02429149797570852,
+                                    0.018893387314439927
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    2.0,
+                                    4.0,
+                                    6.0,
+                                    8.0,
+                                    10.0,
+                                    12.0,
+                                    14.0,
+                                    16.0,
+                                    18.0,
+                                    20.0
+                                ],
+                                "y": [
+                                    0.045,
+                                    0.0,
+                                    0.01,
+                                    0.0375,
+                                    0.065,
+                                    0.13,
+                                    0.07,
+                                    0.0825,
+                                    0.0325,
+                                    0.0275
+                                ]
+                            }
+                        }
+                    },
+                    "Medu": {
+                        "column_name": "Medu",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.07273569584287856,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    0.4,
+                                    0.8,
+                                    1.2000000000000002,
+                                    1.6,
+                                    2.0,
+                                    2.4000000000000004,
+                                    2.8000000000000003,
+                                    3.2,
+                                    3.6,
+                                    4.0
+                                ],
+                                "y": [
+                                    0.02564102564102564,
+                                    0.0,
+                                    0.41025641025641013,
+                                    0.0,
+                                    0.0,
+                                    0.7179487179487174,
+                                    0.0,
+                                    0.6282051282051283,
+                                    0.0,
+                                    0.7179487179487181
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    0.4,
+                                    0.8,
+                                    1.2000000000000002,
+                                    1.6,
+                                    2.0,
+                                    2.4000000000000004,
+                                    2.8000000000000003,
+                                    3.2,
+                                    3.6,
+                                    4.0
+                                ],
+                                "y": [
+                                    0.0125,
+                                    0.0,
+                                    0.33749999999999986,
+                                    0.0,
+                                    0.0,
+                                    0.5874999999999995,
+                                    0.0,
+                                    0.6250000000000001,
+                                    0.0,
+                                    0.9375000000000001
+                                ]
+                            }
+                        }
+                    },
+                    "Walc": {
+                        "column_name": "Walc",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.0004074047263322333,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.794871794871795,
+                                    0.0,
+                                    0.6153846153846152,
+                                    0.0,
+                                    0.0,
+                                    0.6153846153846149,
+                                    0.0,
+                                    0.30769230769230776,
+                                    0.0,
+                                    0.16666666666666652
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    1.1125000000000003,
+                                    0.0,
+                                    0.46249999999999986,
+                                    0.0,
+                                    0.0,
+                                    0.39999999999999963,
+                                    0.0,
+                                    0.3375000000000001,
+                                    0.0,
+                                    0.18749999999999983
+                                ]
+                            }
+                        }
+                    },
+                    "absences": {
+                        "column_name": "absences",
+                        "column_type": "num",
+                        "stattest_name": "K-S p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.047885806857406656,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    7.5,
+                                    15.0,
+                                    22.5,
+                                    30.0,
+                                    37.5,
+                                    45.0,
+                                    52.5,
+                                    60.0,
+                                    67.5,
+                                    75.0
+                                ],
+                                "y": [
+                                    0.08957264957264957,
+                                    0.02735042735042735,
+                                    0.012307692307692308,
+                                    0.0013675213675213675,
+                                    0.0006837606837606838,
+                                    0.0013675213675213675,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0006837606837606838
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    5.6,
+                                    11.2,
+                                    16.799999999999997,
+                                    22.4,
+                                    28.0,
+                                    33.599999999999994,
+                                    39.199999999999996,
+                                    44.8,
+                                    50.4,
+                                    56.0
+                                ],
+                                "y": [
+                                    0.12053571428571429,
+                                    0.037500000000000006,
+                                    0.013392857142857149,
+                                    0.0026785714285714277,
+                                    0.0026785714285714277,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0,
+                                    0.0017857142857142852
+                                ]
+                            }
+                        }
+                    },
+                    "age": {
+                        "column_name": "age",
+                        "column_type": "num",
+                        "stattest_name": "K-S p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 5.130377525102851e-53,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    16.0,
+                                    16.6,
+                                    17.2,
+                                    17.8,
+                                    18.4,
+                                    19.0,
+                                    19.6,
+                                    20.2,
+                                    20.8,
+                                    21.4,
+                                    22.0
+                                ],
+                                "y": [
+                                    0.162393162393162,
+                                    0.606837606837609,
+                                    0.0,
+                                    0.666666666666669,
+                                    0.0,
+                                    0.1880341880341876,
+                                    0.025641025641025734,
+                                    0.0,
+                                    0.008547008547008577,
+                                    0.008547008547008527
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    15.0,
+                                    15.4,
+                                    15.8,
+                                    16.2,
+                                    16.6,
+                                    17.0,
+                                    17.4,
+                                    17.8,
+                                    18.2,
+                                    18.6,
+                                    19.0
+                                ],
+                                "y": [
+                                    1.0249999999999992,
+                                    0.0,
+                                    1.0625000000000038,
+                                    0.0,
+                                    0.0,
+                                    0.3375000000000012,
+                                    0.0,
+                                    0.050000000000000176,
+                                    0.0,
+                                    0.025000000000000088
+                                ]
+                            }
+                        }
+                    },
+                    "failures": {
+                        "column_name": "failures",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 7.729153794405067e-08,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    0.3,
+                                    0.6,
+                                    0.8999999999999999,
+                                    1.2,
+                                    1.5,
+                                    1.7999999999999998,
+                                    2.1,
+                                    2.4,
+                                    2.6999999999999997,
+                                    3.0
+                                ],
+                                "y": [
+                                    2.5641025641025643,
+                                    0.0,
+                                    0.0,
+                                    0.5982905982905982,
+                                    0.0,
+                                    0.0,
+                                    0.10256410256410248,
+                                    0.0,
+                                    0.0,
+                                    0.06837606837606831
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    0.0,
+                                    0.3,
+                                    0.6,
+                                    0.8999999999999999,
+                                    1.2,
+                                    1.5,
+                                    1.7999999999999998,
+                                    2.1,
+                                    2.4,
+                                    2.6999999999999997,
+                                    3.0
+                                ],
+                                "y": [
+                                    2.7,
+                                    0.0,
+                                    0.0,
+                                    0.24999999999999997,
+                                    0.0,
+                                    0.0,
+                                    0.18333333333333318,
+                                    0.0,
+                                    0.0,
+                                    0.19999999999999982
+                                ]
+                            }
+                        }
+                    },
+                    "famrel": {
+                        "column_name": "famrel",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.5722148844184567,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.051282051282051294,
+                                    0.0,
+                                    0.11538461538461535,
+                                    0.0,
+                                    0.0,
+                                    0.3974358974358971,
+                                    0.0,
+                                    1.307692307692308,
+                                    0.0,
+                                    0.6282051282051276
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.05000000000000001,
+                                    0.0,
+                                    0.11249999999999996,
+                                    0.0,
+                                    0.0,
+                                    0.4624999999999996,
+                                    0.0,
+                                    1.1625000000000003,
+                                    0.0,
+                                    0.7124999999999995
+                                ]
+                            }
+                        }
+                    },
+                    "freetime": {
+                        "column_name": "freetime",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.9572183183332686,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.1153846153846154,
+                                    0.0,
+                                    0.41025641025641013,
+                                    0.0,
+                                    0.0,
+                                    0.9743589743589735,
+                                    0.0,
+                                    0.7564102564102566,
+                                    0.0,
+                                    0.24358974358974336
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.12500000000000003,
+                                    0.0,
+                                    0.39999999999999986,
+                                    0.0,
+                                    0.0,
+                                    1.012499999999999,
+                                    0.0,
+                                    0.7000000000000002,
+                                    0.0,
+                                    0.26249999999999973
+                                ]
+                            }
+                        }
+                    },
+                    "goout": {
+                        "column_name": "goout",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.48439428870424206,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.15384615384615388,
+                                    0.0,
+                                    0.5769230769230766,
+                                    0.0,
+                                    0.0,
+                                    0.8461538461538455,
+                                    0.0,
+                                    0.5769230769230771,
+                                    0.0,
+                                    0.34615384615384587
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.13750000000000004,
+                                    0.0,
+                                    0.7249999999999998,
+                                    0.0,
+                                    0.0,
+                                    0.7999999999999993,
+                                    0.0,
+                                    0.5125000000000002,
+                                    0.0,
+                                    0.32499999999999973
+                                ]
+                            }
+                        }
+                    },
+                    "health": {
+                        "column_name": "health",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.003913868624850633,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.30769230769230776,
+                                    0.0,
+                                    0.32051282051282043,
+                                    0.0,
+                                    0.0,
+                                    0.6666666666666661,
+                                    0.0,
+                                    0.4487179487179488,
+                                    0.0,
+                                    0.7564102564102557
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.4,
+                                    1.8,
+                                    2.2,
+                                    2.6,
+                                    3.0,
+                                    3.4000000000000004,
+                                    3.8000000000000003,
+                                    4.2,
+                                    4.6,
+                                    5.0
+                                ],
+                                "y": [
+                                    0.2875000000000001,
+                                    0.0,
+                                    0.24999999999999992,
+                                    0.0,
+                                    0.0,
+                                    0.4874999999999996,
+                                    0.0,
+                                    0.38750000000000007,
+                                    0.0,
+                                    1.087499999999999
+                                ]
+                            }
+                        }
+                    },
+                    "studytime": {
+                        "column_name": "studytime",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 3.803599594585054e-07,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.3,
+                                    1.6,
+                                    1.9,
+                                    2.2,
+                                    2.5,
+                                    2.8,
+                                    3.1,
+                                    3.4,
+                                    3.6999999999999997,
+                                    4.0
+                                ],
+                                "y": [
+                                    0.735042735042735,
+                                    0.0,
+                                    0.0,
+                                    1.6410256410256396,
+                                    0.0,
+                                    0.0,
+                                    0.7521367521367515,
+                                    0.0,
+                                    0.0,
+                                    0.20512820512820495
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.3,
+                                    1.6,
+                                    1.9,
+                                    2.2,
+                                    2.5,
+                                    2.8,
+                                    3.1,
+                                    3.4,
+                                    3.6999999999999997,
+                                    4.0
+                                ],
+                                "y": [
+                                    1.0333333333333332,
+                                    0.0,
+                                    0.0,
+                                    1.6999999999999986,
+                                    0.0,
+                                    0.0,
+                                    0.3499999999999997,
+                                    0.0,
+                                    0.0,
+                                    0.24999999999999978
+                                ]
+                            }
+                        }
+                    },
+                    "traveltime": {
+                        "column_name": "traveltime",
+                        "column_type": "num",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.0002774400195188466,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.3,
+                                    1.6,
+                                    1.9,
+                                    2.2,
+                                    2.5,
+                                    2.8,
+                                    3.1,
+                                    3.4,
+                                    3.6999999999999997,
+                                    4.0
+                                ],
+                                "y": [
+                                    1.9658119658119655,
+                                    0.0,
+                                    0.0,
+                                    1.1111111111111103,
+                                    0.0,
+                                    0.0,
+                                    0.20512820512820495,
+                                    0.0,
+                                    0.0,
+                                    0.05128205128205124
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    1.0,
+                                    1.3,
+                                    1.6,
+                                    1.9,
+                                    2.2,
+                                    2.5,
+                                    2.8,
+                                    3.1,
+                                    3.4,
+                                    3.6999999999999997,
+                                    4.0
+                                ],
+                                "y": [
+                                    2.3666666666666663,
+                                    0.0,
+                                    0.0,
+                                    0.6999999999999994,
+                                    0.0,
+                                    0.0,
+                                    0.18333333333333318,
+                                    0.0,
+                                    0.0,
+                                    0.08333333333333327
+                                ]
+                            }
+                        }
+                    },
+                    "Fjob": {
+                        "column_name": "Fjob",
+                        "column_type": "cat",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.002100764087344873,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "at_home",
+                                    "health",
+                                    "other",
+                                    "services",
+                                    "teacher"
+                                ],
+                                "y": [
+                                    13,
+                                    5,
+                                    111,
+                                    57,
+                                    9
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "at_home",
+                                    "health",
+                                    "other",
+                                    "services",
+                                    "teacher"
+                                ],
+                                "y": [
+                                    7,
+                                    13,
+                                    106,
+                                    54,
+                                    20
+                                ]
+                            }
+                        }
+                    },
+                    "Mjob": {
+                        "column_name": "Mjob",
+                        "column_type": "cat",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.22323779865123103,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "at_home",
+                                    "health",
+                                    "other",
+                                    "services",
+                                    "teacher"
+                                ],
+                                "y": [
+                                    34,
+                                    15,
+                                    71,
+                                    47,
+                                    28
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "at_home",
+                                    "health",
+                                    "other",
+                                    "services",
+                                    "teacher"
+                                ],
+                                "y": [
+                                    25,
+                                    19,
+                                    70,
+                                    56,
+                                    30
+                                ]
+                            }
+                        }
+                    },
+                    "Pstatus": {
+                        "column_name": "Pstatus",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.6823008293163504,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "A",
+                                    "T"
+                                ],
+                                "y": [
+                                    19,
+                                    176
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "A",
+                                    "T"
+                                ],
+                                "y": [
+                                    22,
+                                    178
+                                ]
+                            }
+                        }
+                    },
+                    "activities": {
+                        "column_name": "activities",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.03949770432037769,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    106,
+                                    89
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    88,
+                                    112
+                                ]
+                            }
+                        }
+                    },
+                    "address": {
+                        "column_name": "address",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.0023898645130431273,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "R",
+                                    "U"
+                                ],
+                                "y": [
+                                    56,
+                                    139
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "R",
+                                    "U"
+                                ],
+                                "y": [
+                                    32,
+                                    168
+                                ]
+                            }
+                        }
+                    },
+                    "famsize": {
+                        "column_name": "famsize",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.7021962372682928,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "GT3",
+                                    "LE3"
+                                ],
+                                "y": [
+                                    137,
+                                    58
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "GT3",
+                                    "LE3"
+                                ],
+                                "y": [
+                                    144,
+                                    56
+                                ]
+                            }
+                        }
+                    },
+                    "famsup": {
+                        "column_name": "famsup",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.030567296816720324,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    86,
+                                    109
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    67,
+                                    133
+                                ]
+                            }
+                        }
+                    },
+                    "guardian": {
+                        "column_name": "guardian",
+                        "column_type": "cat",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 9.47253068661944e-17,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "father",
+                                    "mother",
+                                    "other"
+                                ],
+                                "y": [
+                                    37,
+                                    132,
+                                    26
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "father",
+                                    "mother",
+                                    "other"
+                                ],
+                                "y": [
+                                    53,
+                                    141,
+                                    6
+                                ]
+                            }
+                        }
+                    },
+                    "higher": {
+                        "column_name": "higher",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.9536658323810709,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    10,
+                                    185
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    10,
+                                    190
+                                ]
+                            }
+                        }
+                    },
+                    "internet": {
+                        "column_name": "internet",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.7021212812980826,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    34,
+                                    161
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    32,
+                                    168
+                                ]
+                            }
+                        }
+                    },
+                    "nursery": {
+                        "column_name": "nursery",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.08046594294114096,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    47,
+                                    148
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    34,
+                                    166
+                                ]
+                            }
+                        }
+                    },
+                    "paid": {
+                        "column_name": "paid",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.018661743724340152,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    94,
+                                    101
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    120,
+                                    80
+                                ]
+                            }
+                        }
+                    },
+                    "reason": {
+                        "column_name": "reason",
+                        "column_type": "cat",
+                        "stattest_name": "chi-square p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.745636526081821,
+                        "drift_detected": false,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "course",
+                                    "home",
+                                    "other",
+                                    "reputation"
+                                ],
+                                "y": [
+                                    68,
+                                    55,
+                                    19,
+                                    53
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "course",
+                                    "home",
+                                    "other",
+                                    "reputation"
+                                ],
+                                "y": [
+                                    77,
+                                    54,
+                                    17,
+                                    52
+                                ]
+                            }
+                        }
+                    },
+                    "romantic": {
+                        "column_name": "romantic",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.0115656878767596,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    118,
+                                    77
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    145,
+                                    55
+                                ]
+                            }
+                        }
+                    },
+                    "school": {
+                        "column_name": "school",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 2.724487302430134e-13,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "GP",
+                                    "MS"
+                                ],
+                                "y": [
+                                    149,
+                                    46
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "GP",
+                                    "MS"
+                                ],
+                                "y": [
+                                    200,
+                                    0
+                                ]
+                            }
+                        }
+                    },
+                    "schoolsup": {
+                        "column_name": "schoolsup",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 5.2378414188147815e-06,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    185,
+                                    10
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "no",
+                                    "yes"
+                                ],
+                                "y": [
+                                    159,
+                                    41
+                                ]
+                            }
+                        }
+                    },
+                    "sex": {
+                        "column_name": "sex",
+                        "column_type": "cat",
+                        "stattest_name": "Z-test p_value",
+                        "stattest_threshold": 0.05,
+                        "drift_score": 0.037579128814895224,
+                        "drift_detected": true,
+                        "current": {
+                            "small_distribution": {
+                                "x": [
+                                    "F",
+                                    "M"
+                                ],
+                                "y": [
+                                    113,
+                                    82
+                                ]
+                            }
+                        },
+                        "reference": {
+                            "small_distribution": {
+                                "x": [
+                                    "F",
+                                    "M"
+                                ],
+                                "y": [
+                                    95,
+                                    105
+                                ]
+                            }
+                        }
+                    }
+                },
+                "current_fi": null,
+                "reference_fi": null
+            }
+        }
+    ]
+}

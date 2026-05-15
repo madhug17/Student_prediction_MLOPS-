@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,8 +27,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest httpx
+          # Force installation of core requirements to prevent missing CI modules
+          pip install redis shap scikit-learn feast joblib pydantic uvicorn celery prometheus-fastapi-instrumentator python-dotenv
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest httpx requests
+
+      - name: Start API in background
+        run: |
+          # UPDATED: Corrected from project01.py to your actual app file app01.py
+          python app01.py & 
+          sleep 5 
 
       - name: Run tests
         run: python -m pytest

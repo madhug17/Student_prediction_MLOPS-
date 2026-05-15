@@ -1,0 +1,41 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: student-canary
+spec:
+  predictors:
+  - name: stable
+    replicas: 1
+    traffic: 80
+    graph:
+      name: student-model
+      implementation: CUSTOM
+      modelUri: gs://dummy
+      type: MODEL
+    componentSpecs:
+    - spec:
+        containers:
+        - name: student-model
+          image: madhug17/student-custom-model:v1
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: SELDON_LOG_LEVEL
+            value: DEBUG
+
+  - name: canary
+    replicas: 1
+    traffic: 20
+    graph:
+      name: student-model
+      implementation: CUSTOM
+      modelUri: gs://dummy  # <--- THIS WAS YOUR ERROR (It was "" before)
+      type: MODEL
+    componentSpecs:
+    - spec:
+        containers:
+        - name: student-model
+          image: madhug17/student-custom-model:v2
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: SELDON_LOG_LEVEL
+            value: DEBUG

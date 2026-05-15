@@ -1,0 +1,35 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: student-abtest
+spec:
+  predictors:
+  - name: default
+    replicas: 1
+    graph:
+      name: ab-test-router
+      implementation: RANDOM_ABTEST # 🏆 This tells Seldon to use its BUILT-IN router
+      children:
+      - name: student-model-a
+        type: MODEL
+      - name: student-model-b
+        type: MODEL
+    componentSpecs:
+    - spec:
+        containers:
+        - name: student-model-a
+          image: madhug17/student-custom-model:v1
+          imagePullPolicy: IfNotPresent
+          command: ["seldon-core-microservice"]
+          args: ["model.StudentPerformanceModel", "--service-type", "MODEL"]
+          env:
+          - name: MODEL_NAME
+            value: model.StudentPerformanceModel
+        - name: student-model-b
+          image: madhug17/student-custom-model:v2
+          imagePullPolicy: IfNotPresent
+          command: ["seldon-core-microservice"]
+          args: ["model.StudentPerformanceModel", "--service-type", "MODEL"]
+          env:
+          - name: MODEL_NAME
+            value: model.StudentPerformanceModel

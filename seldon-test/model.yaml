@@ -1,0 +1,16 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+
+metadata:
+  name: student-model
+
+spec:
+  predictors:
+  - name: default
+    replicas: 1
+
+    graph:
+      name: classifier
+      implementation: SKLEARN_SERVER
+
+      modelUri: gs://seldon-models/sklearn/mms/lr_model

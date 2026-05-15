@@ -1,0 +1,4 @@
+seldon-core
+scikit-learn
+numpy
+joblib

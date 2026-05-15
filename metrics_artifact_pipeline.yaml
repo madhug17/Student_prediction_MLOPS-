@@ -1,0 +1,290 @@
+# PIPELINE DEFINITION
+# Name: metrics-artifact-pipeline
+# Inputs:
+#    accuracy_threshold: float [Default: 0.9]
+components:
+  comp-condition-1:
+    dag:
+      tasks:
+        deploy-model:
+          cachingOptions:
+            enableCache: true
+          componentRef:
+            name: comp-deploy-model
+          inputs:
+            parameters:
+              accuracy:
+                componentInputParameter: pipelinechannel--evaluate-model-Output
+          taskInfo:
+            name: deploy-model
+    inputDefinitions:
+      parameters:
+        pipelinechannel--accuracy_threshold:
+          parameterType: NUMBER_DOUBLE
+        pipelinechannel--evaluate-model-Output:
+          parameterType: NUMBER_DOUBLE
+  comp-deploy-model:
+    executorLabel: exec-deploy-model
+    inputDefinitions:
+      parameters:
+        accuracy:
+          parameterType: NUMBER_DOUBLE
+  comp-evaluate-model:
+    executorLabel: exec-evaluate-model
+    inputDefinitions:
+      artifacts:
+        dataset_artifact:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        model_artifact:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+    outputDefinitions:
+      artifacts:
+        metrics:
+          artifactType:
+            schemaTitle: system.Metrics
+            schemaVersion: 0.0.1
+      parameters:
+        Output:
+          parameterType: NUMBER_DOUBLE
+  comp-load-data:
+    executorLabel: exec-load-data
+    outputDefinitions:
+      artifacts:
+        dataset_artifact:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-train-model:
+    executorLabel: exec-train-model
+    inputDefinitions:
+      artifacts:
+        dataset_artifact:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+    outputDefinitions:
+      artifacts:
+        model_artifact:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+deploymentSpec:
+  executors:
+    exec-deploy-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - deploy_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.16.1'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef deploy_model(\n    accuracy: float\n):\n\n    print(f\"Deploying\
+          \ model with accuracy: {accuracy}\")\n\n"
+        image: python:3.12.4
+    exec-evaluate-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - evaluate_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'pandas' 'scikit-learn'\
+          \ 'joblib'  &&  python3 -m pip install --quiet --no-warn-script-location\
+          \ 'kfp==2.16.1' '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"\
+          3.9\"' && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef evaluate_model(\n    dataset_artifact: Input[Dataset],\n    model_artifact:\
+          \ Input[Model],\n    metrics: Output[Metrics]\n) -> float:\n\n    import\
+          \ pandas as pd\n    import joblib\n    import math\n\n    from sklearn.metrics\
+          \ import (\n        r2_score,\n        mean_squared_error\n    )\n\n   \
+          \ print(\"Evaluating model...\")\n\n    # load dataset\n    df = pd.read_csv(dataset_artifact.path)\n\
+          \n    # features\n    X = df[[\"studytime\", \"failures\", \"absences\"\
+          ]]\n\n    # target\n    y = df[\"G3\"]\n\n    # load model\n    model =\
+          \ joblib.load(model_artifact.path)\n\n    # predictions\n    preds = model.predict(X)\n\
+          \n    # metrics\n    accuracy = r2_score(y, preds)\n\n    mse = mean_squared_error(y,\
+          \ preds)\n\n    rmse = math.sqrt(mse)\n\n    # log metrics\n    metrics.log_metric(\"\
+          accuracy\", accuracy)\n\n    metrics.log_metric(\"mse\", mse)\n\n    metrics.log_metric(\"\
+          rmse\", rmse)\n\n    print(f\"Accuracy: {accuracy}\")\n\n    print(f\"MSE:\
+          \ {mse}\")\n\n    print(f\"RMSE: {rmse}\")\n\n    return float(accuracy)\n\
+          \n"
+        image: python:3.12.4
+    exec-load-data:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - load_data
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'pandas'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'kfp==2.16.1'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef load_data(\n    dataset_artifact: Output[Dataset]\n):\n\n   \
+          \ import pandas as pd\n\n    print(\"Loading dataset...\")\n\n    # load\
+          \ dataset\n    df = pd.read_csv(\"student-mat.csv\", sep=\";\")\n\n    #\
+          \ save dataset artifact\n    df.to_csv(dataset_artifact.path, index=False)\n\
+          \n    print(\"Dataset artifact created!\")\n\n"
+        image: python:3.12.4
+    exec-train-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - train_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'pandas' 'scikit-learn'\
+          \ 'joblib'  &&  python3 -m pip install --quiet --no-warn-script-location\
+          \ 'kfp==2.16.1' '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"\
+          3.9\"' && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef train_model(\n    dataset_artifact: Input[Dataset],\n    model_artifact:\
+          \ Output[Model]\n):\n\n    import pandas as pd\n    import joblib\n    import\
+          \ time\n\n    from sklearn.linear_model import LinearRegression\n\n    print(\"\
+          Training model...\")\n\n    # load dataset\n    df = pd.read_csv(dataset_artifact.path)\n\
+          \n    # features\n    X = df[[\"studytime\", \"failures\", \"absences\"\
+          ]]\n\n    # target\n    y = df[\"G3\"]\n\n    # model\n    time.sleep(15)\n\
+          \    model = LinearRegression()\n\n    model.fit(X, y)\n\n    # save model\
+          \ artifact\n    joblib.dump(model, model_artifact.path)\n\n    print(\"\
+          Model artifact saved!\")\n\n"
+        image: python:3.12.4
+pipelineInfo:
+  name: metrics-artifact-pipeline
+root:
+  dag:
+    tasks:
+      condition-1:
+        componentRef:
+          name: comp-condition-1
+        dependentTasks:
+        - evaluate-model
+        inputs:
+          parameters:
+            pipelinechannel--accuracy_threshold:
+              componentInputParameter: accuracy_threshold
+            pipelinechannel--evaluate-model-Output:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: evaluate-model
+        taskInfo:
+          name: condition-1
+        triggerPolicy:
+          condition: inputs.parameter_values['pipelinechannel--evaluate-model-Output']
+            > inputs.parameter_values['pipelinechannel--accuracy_threshold']
+      evaluate-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-evaluate-model
+        dependentTasks:
+        - load-data
+        - train-model
+        inputs:
+          artifacts:
+            dataset_artifact:
+              taskOutputArtifact:
+                outputArtifactKey: dataset_artifact
+                producerTask: load-data
+            model_artifact:
+              taskOutputArtifact:
+                outputArtifactKey: model_artifact
+                producerTask: train-model
+        taskInfo:
+          name: evaluate-model
+      load-data:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-load-data
+        taskInfo:
+          name: load-data
+      train-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-train-model
+        dependentTasks:
+        - load-data
+        inputs:
+          artifacts:
+            dataset_artifact:
+              taskOutputArtifact:
+                outputArtifactKey: dataset_artifact
+                producerTask: load-data
+        taskInfo:
+          name: train-model
+  inputDefinitions:
+    parameters:
+      accuracy_threshold:
+        defaultValue: 0.9
+        isOptional: true
+        parameterType: NUMBER_DOUBLE
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.16.1

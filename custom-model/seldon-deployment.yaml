@@ -1,0 +1,27 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: student-custom-model
+spec:
+  predictors:
+  - name: default
+    replicas: 1
+    graph:
+      name: student-model-worker
+      type: MODEL
+    componentSpecs:
+    - spec:
+        containers:
+        - name: student-model-worker
+          image: madhug17/student-custom-model:v2
+          imagePullPolicy: Always
+          
+          # 🛑 FIXED: This completely blocks Seldon from injecting 'REST'
+          command: ["seldon-core-microservice"]
+          args: ["model.StudentPerformanceModel", "--service-type", "MODEL"]
+          
+          env:
+          - name: MODEL_NAME
+            value: model.StudentPerformanceModel
+          - name: API_TYPE
+            value: REST

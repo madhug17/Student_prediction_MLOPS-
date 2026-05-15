@@ -1,0 +1,11 @@
+stages:
+  train:
+    cmd: python training.py
+    deps:
+    - data/dataset.csv
+    - training.py
+    outs:
+    - model.pkl
+    metrics:
+    - metrics.json:
+        cache: false
