@@ -34,7 +34,6 @@ jobs:
 
       - name: Start API in background
         run: |
-          # UPDATED: Corrected from project01.py to your actual app file app01.py
           python app01.py & 
           sleep 5 
 
@@ -58,4 +57,12 @@ jobs:
 
     steps:
       - name: Deploy to Render
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+        # FIX: We wrap the secret inside an explicit execution environment block
+        env:
+          RENDER_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$RENDER_HOOK" ]; then
+            echo "❌ Error: RENDER_DEPLOY_HOOK secret is empty or missing in GitHub Repository Settings!"
+            exit 1
+          fi
+          curl -X POST "$RENDER_HOOK"
