@@ -1,6 +1,6 @@
 import requests
 
-url = "http://localhost:8080/predict-easy"
+url = "http://localhost:8000/predict-easy"
 token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc3NjY4NTI2MX0.s2sFVxu20TAPqXTFxOGCnteU6CDu5hBUkJVWk1waVb8"
 
 headers = {
