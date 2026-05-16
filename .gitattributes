@@ -1,0 +1,4 @@
+# Ignore auto-generated reports and dashboards from language stats
+reports/** linguist-vendored
+mlruns/** linguist-vendored
+*.html linguist-vendored
