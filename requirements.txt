@@ -1,8 +1,8 @@
 fastapi
 uvicorn[standard]
 
-pandas
-numpy
+pandas>=2.1.1
+numpy<2.0.0
 scikit-learn
 xgboost
 joblib
@@ -27,6 +27,6 @@ requests
 feast
 pyarrow
 
-apache-airflow
+apache-airflow<3.0.0
 python-dotenv
 locust
