@@ -3,6 +3,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import redis.asyncio as redis
 import json
 import logging
+import os  # <-- ADDED THIS
 
 # ---- IMPORT CELERY TASK ----
 from tasks import predict_student
@@ -32,10 +33,15 @@ Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ---- REDIS CONNECTION POOL ----
-pool = redis.ConnectionPool(
-    host="127.0.0.1",
-    port=6379,
+# =========================================================
+# ---- DYNAMIC REDIS CONNECTION SETUP ----
+# =========================================================
+# Pull the Render URL from environment, fallback to localhost for desktop testing
+REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379")
+
+# Use from_url to properly parse the redis:// string
+pool = redis.ConnectionPool.from_url(
+    REDIS_URL,
     decode_responses=True,
     max_connections=50
 )
