@@ -1,205 +1,128 @@
-﻿from fastapi import FastAPI, HTTPException, Depends
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-import redis.asyncio as redis
-import json
+from fastapi import FastAPI, Depends, HTTPException, Request
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List
+import pandas as pd
+import time
 import logging
-import os  # <-- ADDED THIS
 
-# ---- IMPORT CELERY TASK ----
-from tasks import predict_student
-
-# ---- IMPORT TO CHECK TASK STATUS ----
-from celery.result import AsyncResult
-
-from pydantic import BaseModel
-from dotenv import load_dotenv
-
-# ---- PROMETHEUS METRICS ----
-from prometheus_fastapi_instrumentator import Instrumentator
-
-# ---- AUTH FUNCTIONS ----
+# Internal imports - Ensure these files exist in your folders
+from schemas.input_schema import StudentData
+from schemas.output_schema import PredictionResponse
+from services.prediction_service import load_model
 from auth import create_access_token, verify_token
 
-# ---- LOAD ENVIRONMENT VARIABLES ----
-load_dotenv()
-
-# ---- INIT FASTAPI APP ----
-app = FastAPI(title="ML Prediction API - Producer Service")
-
-# ---- ENABLE METRICS ENDPOINT ----
-Instrumentator().instrument(app).expose(app, endpoint="/metrics")
-
-# ---- LOGGING SETUP ----
+# -------- CONFIG & LOGGING --------
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# =========================================================
-# ---- DYNAMIC REDIS CONNECTION SETUP ----
-# =========================================================
-# Pull the Render URL from environment, fallback to localhost for desktop testing
-REDIS_URL = os.getenv("REDIS_URL", "redis://127.0.0.1:6379")
+# This must match the field name in your PredictionResponse schema
+MODEL_VERSION = "v1.0.0"
 
-# Use from_url to properly parse the redis:// string
-pool = redis.ConnectionPool.from_url(
-    REDIS_URL,
-    decode_responses=True,
-    max_connections=50
+app = FastAPI(title="Student Performance API", version=MODEL_VERSION)
+security = HTTPBearer()
+model = load_model()
+
+# -------- CORS --------
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# ---- REDIS CLIENT ----
-redis_client = redis.Redis(connection_pool=pool)
+# -------- RATE LIMITER MIDDLEWARE --------
+request_store = {}
 
-# ---- AUTH SETUP ----
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+@app.middleware("http")
+async def rate_limit(request: Request, call_next):
+    ip = request.client.host
+    now = time.time()
+    
+    # Clean up old timestamps (older than 60s)
+    request_store[ip] = [t for t in request_store.get(ip, []) if now - t < 60]
+    
+    if len(request_store[ip]) >= 20: 
+        raise HTTPException(status_code=429, detail="Rate limit exceeded")
+    
+    request_store[ip].append(now)
+    return await call_next(request)
 
-
-# ---- CURRENT USER VALIDATION ----
-async def get_current_user(token: str = Depends(oauth2_scheme)):
-    payload = verify_token(token)
-
-    if not payload:
-        raise HTTPException(status_code=401, detail="Invalid token")
-
+# -------- AUTH DEPENDENCY --------
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    payload = verify_token(credentials.credentials)
     return payload
 
+# -------- ROUTES --------
 
-# ---- INPUT DATA MODEL ----
-class StudentData(BaseModel):
-    G1: int
-    G2: int
-    absences: int
-    failures: int = 0
-    studytime: int = 2
-    Mother_edu: int = 4
-    Father_edu: int = 4
-    Trip: int = 2
-    health: int = 5
-    higher: str = "yes"
-    sex: str = "M"
-    school: str = "GP"
-
-
-# =========================================================
-# ROUTES
-# =========================================================
-
-# ---- HEALTH CHECK ROUTE ----
 @app.get("/")
-async def health():
-    try:
-        redis_ok = await redis_client.ping()
-
-    except Exception as e:
-        logger.error(f"Health check Redis fail: {e}")
-        redis_ok = False
-
+def home():
     return {
-        "status": "online",
-        "redis": redis_ok,
-        "service": "producer"
+        "status": "ready", 
+        "model_loaded": model is not None,
+        "version": MODEL_VERSION
     }
 
-
-# ---- LOGIN ROUTE ----
-@app.post("/token")
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-
-    if form_data.username == "admin" and form_data.password == "1234":
-
-        token = create_access_token({"sub": form_data.username})
-
-        return {
-            "access_token": token,
-            "token_type": "bearer"
-        }
-
+@app.post("/login")
+def login(username: str, password: str):
+    if username == "admin" and password == "1234":
+        token = create_access_token({"sub": username})
+        return {"access_token": token, "token_type": "bearer"}
     raise HTTPException(status_code=401, detail="Invalid credentials")
 
-
-# ---- PREDICTION ROUTE ----
-@app.post("/predict-easy")
-async def predict_easy(
-    data: StudentData,
-    current_user: dict = Depends(get_current_user)
-):
+# 1. SINGLE PREDICTION
+@app.post("/v1/predict", response_model=PredictionResponse)
+def predict(data: StudentData, user=Depends(get_current_user)):
+    if not model:
+        raise HTTPException(status_code=503, detail="Model not initialized")
+    
     try:
-        payload = data.model_dump()
+        # Convert Pydantic to DataFrame
+        input_df = pd.DataFrame([data.model_dump()])
+        
+        # Get raw prediction and probabilities
+        pred = model.predict(input_df)
+        prob_array = model.predict_proba(input_df)
+        
+        # Calculate confidence
+        confidence = float(prob_array.max())*100
 
-        # Send task to Celery
-        task = predict_student.delay(payload)
-
-        # Optional manual Redis queue tracking
-        job = {
-            "id": task.id,
-            "data": payload,
-            "status": "queued"
-        }
-
-        await redis_client.rpush("prediction_queue", json.dumps(job))
-
+        # The return keys MUST match PredictionResponse in output_schema.py
         return {
-            "status": "queued",
-            "task_id": task.id
+            "prediction": "Pass" if int(pred) == 1 else "Fail",
+            "confidence": round(confidence, 4),
+            "model_version": MODEL_VERSION 
         }
-
     except Exception as e:
-        logger.error(f"TASK QUEUE ERROR: {e}")
+        logger.error(f"Inference error: {e}")
+        # Providing more detail helps debug during development
+        raise HTTPException(status_code=500, detail=f"Inference error: {str(e)}")
 
-        raise HTTPException(
-            status_code=500,
-            detail=f"Internal Queue Error: {str(e)}"
-        )
+# 2. BATCH PREDICTION
+@app.post("/v1/predict-batch")
+def predict_batch(data: List[StudentData], user=Depends(get_current_user)):
+    if not model:
+        raise HTTPException(status_code=503, detail="Model not initialized")
+    
+    if len(data) > 100:
+        raise HTTPException(status_code=413, detail="Batch too large (Max 100)")
 
-
-# ---- RESULT CHECK ROUTE ----
-@app.get("/result/{request_id}")
-async def get_result(
-    request_id: str,
-    current_user: dict = Depends(get_current_user)
-):
     try:
-        # IMPORTANT FIX:
-        # bind Celery app explicitly
-        task_result = AsyncResult(request_id, app=predict_student.app)
+        # Convert list of students to one DataFrame
+        input_df = pd.DataFrame([d.model_dump() for d in data])
+        
+        preds = model.predict(input_df)
+        probs = model.predict_proba(input_df)
+        
+        results = []
+        for i in range(len(preds)):
+            results.append({
+                "prediction": "Pass" if int(preds[i]) == 1 else "Fail",
+                "confidence": round(float(probs[i].max()), 4),
+                "model_version": MODEL_VERSION
+            })
 
-        if task_result.state == "PENDING":
-            return {
-                "status": "processing",
-                "request_id": request_id,
-                "state": task_result.state
-            }
-
-        if task_result.state == "FAILURE":
-            return {
-                "status": "failed",
-                "request_id": request_id,
-                "state": task_result.state,
-                "error": str(task_result.result)
-            }
-
-        return {
-            "status": "completed",
-            "request_id": request_id,
-            "state": task_result.state,
-            "result": task_result.result
-        }
-
+        return {"results": results, "count": len(results)}
     except Exception as e:
-        logger.error(f"RESULT FETCH ERROR: {e}")
-
-        raise HTTPException(
-            status_code=500,
-            detail=f"Result Fetch Error: {str(e)}"
-        )
-
-
-# ---- RUN APP ----
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(
-        "app01:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True
-    )
+        logger.error(f"Batch inference error: {e}")
+        raise HTTPException(status_code=500, detail="Batch processing failed")

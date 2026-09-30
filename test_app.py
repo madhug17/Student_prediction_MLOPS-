@@ -1,54 +1,48 @@
 from fastapi.testclient import TestClient
 from app01 import app, get_current_user
-from unittest.mock import MagicMock, AsyncMock
-import app01
-import tasks
+from services.prediction_service import get_model
 
-# 1. Bypass authentication check
-app.dependency_overrides[get_current_user] = lambda: {"username": "test_admin"}
+# 1. Mock the Model
+class Fakemodel:
+    def predict(self, X):
+        return
+    def predict_proba(self, X):
+        return [[0.2, 0.8]]
 
-# 2. Mock out background Celery task
-tasks.predict_student.delay = MagicMock(return_value=MagicMock(id="mock-task-id-12345"))
+# 2. Mock the User (Bypasses the JWT requirement for tests)
+def override_get_current_user():
+    return {"sub": "test_admin"}
 
-# 3. Mock out async Redis interaction to prevent "Event loop is closed" errors
-app01.redis_client.rpush = AsyncMock(return_value=1)
+# Apply Overrides
+app.dependency_overrides[get_model] = lambda: Fakemodel()
+app.dependency_overrides[get_current_user] = override_get_current_user
 
 client = TestClient(app)
 
-
-# ✅ Test 1: Health check
-def test_health():
-    response = client.get("/")
+def test_predict_success():
+    response = client.post('/predict', json={
+        "hours_studied": 5,
+        "attendance": 80,
+        "previous_score": 70
+    })
     assert response.status_code == 200
     data = response.json()
-    assert "status" in data
+    assert 'prediction' in data
+    assert 'confidence' in data
 
-
-# ✅ Test 2: Prediction (Valid input)
-def test_predict_success():
-    response = client.post("/predict-easy", json={
-        "G1": 10,
-        "G2": 12,
-        "absences": 2,
-        "higher": "yes"
-    })
-    
-    # 500 loop error is resolved -> now returns 200 queued message or 503 if infrastructure is cold
-    assert response.status_code in [200, 503]
-    if response.status_code == 200:
-        data = response.json()
-        assert data["status"] == "queued"
-        assert "task_id" in data
-
-
-# ✅ Test 3: Invalid input
-def test_invalid_input():
-    response = client.post("/predict-easy", json={
-        "G1": "not-an-int"
+def test_predict_invalid_input():
+    # Pydantic will catch the negative hours based on our gt=0 rule in the schema
+    response = client.post('/predict', json={
+        "hours_studied": -5,
+        "attendance": 80,
+        "previous_score": 70
     })
     assert response.status_code == 422
 
-
-# ✅ Test 4: Dummy
-def test_dummy():
-    assert 1 == 1
+def test_zero_hours():
+    response = client.post('/predict', json={
+        "hours_studied": 0,
+        "attendance": 80,
+        "previous_score": 70
+    })
+    assert response.status_code == 422

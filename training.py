@@ -1,107 +1,68 @@
 import pandas as pd
-import joblib
-import mlflow
-import mlflow.sklearn
-
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.metrics import accuracy_score
-from xgboost import XGBClassifier
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+# Ensure the file exists in your folder!
+try:
+    df = pd.read_csv("student-mat.csv", sep=";")
+except FileNotFoundError:
+    # If semicolon fails, try comma
+df = pd.read_csv("student-mat.csv", sep=";")
+if "G3" not in df.columns:
+    df = pd.read_csv("student-mat.csv", sep=",")
 
-# 🔥 Fix tracking path (Windows issue)
-mlflow.set_tracking_uri("file:./mlruns")
-
-# 🔥 Set experiment
-mlflow.set_experiment("student-performance")
-
-# Load Data
-df = pd.read_csv("student-mat.csv", sep=None, engine='python')
-
-# Fix column names
-df = df.rename(columns={
-    'Medu': 'Mother_edu',
-    'Fedu': 'Father_edu',
-    'goout': 'Trip'
-})
-
-# Target
+# -------- 2. TARGET FIX --------
 df["pass"] = (df["G3"] >= 10).astype(int)
 
-# Features
+# -------- 3. FEATURE ENGINEERING --------
+# I added G1, G2, Medu, Fedu, and higher for better accuracy
 features = [
-    "G1", "G2", "absences", "failures", "studytime",
-    "Mother_edu", "Father_edu", "Trip", "health",
-    "higher", "sex", "school"
+    "G1", "G2", "absences", "failures", "studytime", 
+    "Medu", "Fedu", "goout", "health", "higher", "sex", "school"
 ]
+
+# Ensure all selected features actually exist in the CSV
+features = [f for f in features if f in df.columns]
 
 X = df[features]
 y = df["pass"]
 
-# Train-test split (reproducible)
+# -------- 4. PREPROCESSING --------
+cat_cols = X.select_dtypes(include="object").columns.tolist()
+num_cols = X.select_dtypes(exclude="object").columns.tolist()
+
+preprocessor = ColumnTransformer([
+    ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),# perpose of OneHotEncoder is to convert words into int (1,0)
+    ("num", StandardScaler(), num_cols) # Added scaling for better stability
+])
+
+# -------- 5. THE MODEL --------
+pipeline = Pipeline([
+    ("preprocess", preprocessor),
+    ("model", RandomForestClassifier(
+        n_estimators=300, 
+        max_depth=12, 
+        class_weight="balanced", # Fixes the False Positives issue
+        random_state=42
+    ))
+])
+
+# -------- 6. TRAIN & EVALUATE --------
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-# Columns
-cat_cols = ["higher", "sex", "school"]
-num_cols = [
-    "G1", "G2", "absences", "failures", "studytime",
-    "Mother_edu", "Father_edu", "Trip", "health"
-]
+pipeline.fit(X_train, y_train)
 
-# Preprocessing
-preprocessor = ColumnTransformer([
-    ("cat", OneHotEncoder(handle_unknown="ignore"), cat_cols),
-    ("num", StandardScaler(), num_cols)
-])
+# -------- 7. RESULTS --------
+y_pred = pipeline.predict(X_test)
+print(f"New Accuracy: {accuracy_score(y_test, y_pred):.2%}")
+print("\nNew Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
-# 🔥 Hyperparameters (CHANGE THESE FOR EXPERIMENTS)
-n_estimators = 100
-max_depth = 4
-learning_rate = 0.1
-
-model = XGBClassifier(
-    n_estimators=n_estimators,
-    max_depth=max_depth,
-    learning_rate=learning_rate,
-    eval_metric='logloss'
-)
-
-pipeline = Pipeline([
-    ('preprocess', preprocessor),
-    ('model', model)
-])
-
-# 🔥 Start MLflow run
-with mlflow.start_run():
-
-    # Train
-    pipeline.fit(X_train, y_train)
-
-    # Predict
-    y_pred = pipeline.predict(X_test)
-    acc = accuracy_score(y_test, y_pred)
-
-    # 🔥 Log parameters
-    mlflow.log_param("model", "XGBoost")
-    mlflow.log_param("n_estimators", n_estimators)
-    mlflow.log_param("max_depth", max_depth)
-    mlflow.log_param("learning_rate", learning_rate)
-    mlflow.log_param("features", len(features))
-
-    # 🔥 Log metric
-    mlflow.log_metric("accuracy", acc)
-
-    # 🔥 Log + Register model
-    mlflow.sklearn.log_model(
-        pipeline,
-        "model",
-        registered_model_name="student-performance-model"
-    )
-
-    # Optional local save
-    joblib.dump(pipeline, "model.joblib")
-
-    print(f"✅ Accuracy: {acc}")
+joblib.dump(pipeline, "model.joblib")
+print("\nModel saved with improved features!")
